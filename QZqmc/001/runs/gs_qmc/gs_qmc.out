@@ -1,0 +1,945 @@
+/global/u2/h/haihan/Research/BeH2/instability/QZqmc/001/runs/gs_qmc
+  Input file(s): gs_qmc.in.xml 
+
+=====================================================
+                    QMCPACK 3.9.9
+
+       (c) Copyright 2003-  QMCPACK developers
+
+                    Please cite:
+ J. Kim et al. J. Phys. Cond. Mat. 30 195901 (2018)
+      https://doi.org/10.1088/1361-648X/aab9c3
+
+  Git branch: develop
+  Last git commit: a854014790c5309de44bee11aacb72110d1159f0
+  Last git commit date: Thu Aug 6 17:11:13 2020 -0400
+  Last git commit subject: Merge pull request #2622 from Hyeondeok-Shin/deterministic_test
+=====================================================
+  Global options 
+
+  Total number of MPI ranks = 4
+  Number of MPI groups      = 1
+  MPI group ID              = 0
+  Number of ranks in group  = 4
+  MPI ranks per node        = 1
+  OMP 1st level threads     = 1
+  OMP nested threading disabled or only 1 thread on the 2nd level
+
+  Precision used in this calculation, see definitions in the manual:
+  Base precision      = double
+  Full precision      = double
+
+  Structure-of-arrays (SoA) optimization enabled
+
+  Input XML = gs_qmc.in.xml
+
+  Project = gs_qmc
+  date    = 2021-01-01 18:24:05 PST
+  host    = nid04229
+
+ Random Number
+ -------------
+  Offset for the random number seeds based on time: 325
+
+  Range of prime numbers to use as seeds over processors and threads = 2179-2221
+
+
+ Lattice
+ -------
+  Lattice is not specified for the Open BC. Add a huge box.
+  Simulation cell radius   = 5000000000.000000 bohr
+  Wigner-Seitz cell radius = 5000000000.000000 bohr
+
+ Particle Set 
+ ------------
+  Name: ion0
+  Initializing the lattice by the global supercell
+  All the species have the same mass 1.000000
+  Particle set size: 3
+
+ Particle Set 
+ ------------
+  Name: e
+  Initializing the lattice by the global supercell
+  All the species have the same mass 1.000000
+  Particle set size: 4
+
+ Wavefunction setup: 
+ ------------------- 
+  Name: psi0
+  LCAO: SoaAtomicBasisSet<MultiQuintic,1>
+Reading BasisSet from HDF5 file:../scf/scf.h5
+<input node="atomicBasisSet" name="gaussian" expandYlm="pyscf" angular="spherical" elementType="Be" normalized="no" type="Numerical" expM="0" />
+  AO BasisSet for Be
+   Spherical Harmonics contain (-1)^m factor
+   Angular momentum m expanded as -l, ... ,l, with the exception of L=1 (1,-1,0)
+   Grid is created by the input paremters in h5
+    Using log grid ri = 0.000001 rf = 100.000000 npts = 1001
+   R(n,l,m,s) 0 0 0 0
+   R(n,l,m,s) 1 0 0 0
+   R(n,l,m,s) 2 0 0 0
+   R(n,l,m,s) 3 0 0 0
+   R(n,l,m,s) 4 0 0 0
+   R(n,l,m,s) 5 1 0 0
+   R(n,l,m,s) 6 1 0 0
+   R(n,l,m,s) 7 1 0 0
+   R(n,l,m,s) 8 1 0 0
+   R(n,l,m,s) 9 1 0 0
+   R(n,l,m,s) 10 2 0 0
+   R(n,l,m,s) 11 2 0 0
+   R(n,l,m,s) 12 2 0 0
+   R(n,l,m,s) 13 2 0 0
+   R(n,l,m,s) 14 3 0 0
+   R(n,l,m,s) 15 3 0 0
+   R(n,l,m,s) 16 3 0 0
+   R(n,l,m,s) 17 4 0 0
+   R(n,l,m,s) 18 4 0 0
+Expanding Ylm as L=1 as (1,-1,0) and L>1 as -l,-l+1,...,l-1,l
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 7 spherical orbitals
+   Adding 7 spherical orbitals
+   Adding 7 spherical orbitals
+   Adding 9 spherical orbitals
+   Adding 9 spherical orbitals
+  Setting cutoff radius 10589458611967464.000000
+
+   Maximum Angular Momentum  = 4
+   Number of Radial functors = 19
+   Basis size                = 79
+
+<input node="atomicBasisSet" name="gaussian" expandYlm="pyscf" angular="spherical" elementType="H" normalized="no" type="Numerical" expM="0" />
+  AO BasisSet for H
+   Spherical Harmonics contain (-1)^m factor
+   Angular momentum m expanded as -l, ... ,l, with the exception of L=1 (1,-1,0)
+   Grid is created by the input paremters in h5
+    Using log grid ri = 0.000001 rf = 100.000000 npts = 1001
+   R(n,l,m,s) 0 0 0 0
+   R(n,l,m,s) 1 0 0 0
+   R(n,l,m,s) 2 0 0 0
+   R(n,l,m,s) 3 0 0 0
+   R(n,l,m,s) 4 0 0 0
+   R(n,l,m,s) 5 1 0 0
+   R(n,l,m,s) 6 1 0 0
+   R(n,l,m,s) 7 1 0 0
+   R(n,l,m,s) 8 1 0 0
+   R(n,l,m,s) 9 2 0 0
+   R(n,l,m,s) 10 2 0 0
+   R(n,l,m,s) 11 2 0 0
+   R(n,l,m,s) 12 3 0 0
+   R(n,l,m,s) 13 3 0 0
+Expanding Ylm as L=1 as (1,-1,0) and L>1 as -l,-l+1,...,l-1,l
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 1 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 3 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 5 spherical orbitals
+   Adding 7 spherical orbitals
+   Adding 7 spherical orbitals
+  Setting cutoff radius 995674776766.907715
+
+   Maximum Angular Momentum  = 3
+   Number of Radial functors = 14
+   Basis size                = 46
+
+  Created SPOSet builder named 'LCAOBSet' of type molecularorbital
+Reuse SPOSetBuilder "LCAOBSet" type MolecularOrbital
+  Building SPOSet '' with '' basis set.
+Reuse SPOSetBuilder "LCAOBSet" type MolecularOrbital
+  Building SPOSet '' with '' basis set.
+  Creating a determinant updet group=0 sposet=updet
+  Reusing a SPO set updet
+  Setting delay_rank by default!
+  Using rank-1 Sherman-Morrison Fahy update (SM1)
+  Using DiracDeterminant with DelayedUpdate engine
+
+  Creating a determinant downdet group=1 sposet=downdet
+  Reusing a SPO set downdet
+  Setting delay_rank by default!
+  Using rank-1 Sherman-Morrison Fahy update (SM1)
+  Using DiracDeterminant with DelayedUpdate engine
+
+  Added a fermionic WaveFunctionComponent SlaterDet
+
+   Jastrow
+   -------
+    Name: J1   Type: One-Body   Function: bspline
+
+    Radial function for element: H
+     Number of parameters: 10
+     Cusp: 0.000000
+     Cutoff radius: 5.000000
+
+     Name                        Value Type Recompute Use Index
+     ---- ---------------------------- ---- --------- --- -----
+     eH_0                -3.655220e-01    1         1  ON     0
+     eH_1                -3.456532e-01    1         1  ON     1
+     eH_2                -3.111861e-01    1         1  ON     2
+     eH_3                -2.537325e-01    1         1  ON     3
+     eH_4                -1.956097e-01    1         1  ON     4
+     eH_5                -1.484908e-01    1         1  ON     5
+     eH_6                -1.186422e-01    1         1  ON     6
+     eH_7                -6.399559e-02    1         1  ON     7
+     eH_8                -3.174396e-02    1         1  ON     8
+     eH_9                -1.056176e-02    1         1  ON     9
+
+    Radial function for element: Be
+     Number of parameters: 10
+     Cusp: 0
+     Cutoff radius: 5
+
+      Name                        Value Type Recompute Use Index
+     ----- ---------------------------- ---- --------- --- -----
+     eBe_0                -3.841842e-01    1         1  ON     0
+     eBe_1                -2.849667e-01    1         1  ON     1
+     eBe_2                -2.684213e-01    1         1  ON     2
+     eBe_3                -2.384716e-01    1         1  ON     3
+     eBe_4                -1.982409e-01    1         1  ON     4
+     eBe_5                -1.579132e-01    1         1  ON     5
+     eBe_6                -1.113530e-01    1         1  ON     6
+     eBe_7                -7.161150e-02    1         1  ON     7
+     eBe_8                -3.852494e-02    1         1  ON     8
+     eBe_9                -1.668150e-02    1         1  ON     9
+
+
+   Jastrow
+   -------
+    Name: J2   Type: Two-Body   Function: bspline
+
+    Radial function for species: u - u
+     Number of parameters: 10
+     Cusp: -0.25
+     Cutoff radius: 5
+
+     Name                        Value Type Recompute Use Index
+     ---- ---------------------------- ---- --------- --- -----
+     uu_0                 9.292414e-03    1         1  ON     0
+     uu_1                 2.483449e-01    1         1  ON     1
+     uu_2                 2.460181e-01    1         1  ON     2
+     uu_3                 2.167315e-01    1         1  ON     3
+     uu_4                 1.626656e-01    1         1  ON     4
+     uu_5                 1.124916e-01    1         1  ON     5
+     uu_6                 7.249940e-02    1         1  ON     6
+     uu_7                 4.726181e-02    1         1  ON     7
+     uu_8                 2.689366e-02    1         1  ON     8
+     uu_9                 1.460148e-02    1         1  ON     9
+
+    Radial function for species: u - d
+     Number of parameters: 10
+     Cusp: -0.5
+     Cutoff radius: 5
+
+     Name                        Value Type Recompute Use Index
+     ---- ---------------------------- ---- --------- --- -----
+     ud_0                 9.410298e-01    1         1  ON     0
+     ud_1                 7.431834e-01    1         1  ON     1
+     ud_2                 5.844975e-01    1         1  ON     2
+     ud_3                 4.541084e-01    1         1  ON     3
+     ud_4                 3.435608e-01    1         1  ON     4
+     ud_5                 2.515509e-01    1         1  ON     5
+     ud_6                 1.750851e-01    1         1  ON     6
+     ud_7                 1.132886e-01    1         1  ON     7
+     ud_8                 6.260148e-02    1         1  ON     8
+     ud_9                 3.184815e-02    1         1  ON     9
+
+
+   Jastrow
+   -------
+    Name: J3   Type: eeI   Function: polynomial
+
+     Ion: H   electron-electron: u - u
+      Number of parameters for e-e: 3, for e-I: 3
+      Cutoff radius: 5
+
+        Name                        Value Type Recompute Use Index
+      ------ ---------------------------- ---- --------- --- -----
+       uuH_0                -8.249962e-03    1         1  ON     0
+       uuH_1                 6.951988e-04    1         1  ON     1
+       uuH_2                 1.555918e-03    1         1  ON     2
+       uuH_3                -4.134236e-04    1         1  ON     3
+       uuH_4                 1.850449e-03    1         1  ON     4
+       uuH_5                -1.422842e-02    1         1  ON     5
+       uuH_6                -2.775485e-03    1         1  ON     6
+       uuH_7                 3.354930e-03    1         1  ON     7
+       uuH_8                -6.273365e-03    1         1  ON     8
+       uuH_9                -3.875631e-03    1         1  ON     9
+      uuH_10                 1.034079e-02    1         1  ON    10
+      uuH_11                 1.492718e-02    1         1  ON    11
+      uuH_12                -2.331149e-02    1         1  ON    12
+      uuH_13                -1.033612e-03    1         1  ON    13
+      uuH_14                 1.333416e-02    1         1  ON    14
+      uuH_15                 2.145345e-03    1         1  ON    15
+      uuH_16                 5.927319e-03    1         1  ON    16
+      uuH_17                 9.079119e-03    1         1  ON    17
+      uuH_18                 1.385931e-02    1         1  ON    18
+      uuH_19                -1.816062e-02    1         1  ON    19
+      uuH_20                 7.964213e-03    1         1  ON    20
+      uuH_21                 1.710606e-02    1         1  ON    21
+      uuH_22                -9.053784e-04    1         1  ON    22
+      uuH_23                -1.133960e-02    1         1  ON    23
+      uuH_24                -3.357779e-02    1         1  ON    24
+      uuH_25                 1.727191e-02    1         1  ON    25
+
+     Ion: H   electron-electron: u - d
+      Number of parameters for e-e: 3, for e-I: 3
+      Cutoff radius: 5
+
+        Name                        Value Type Recompute Use Index
+      ------ ---------------------------- ---- --------- --- -----
+       udH_0                -2.208178e-03    1         1  ON     0
+       udH_1                -3.412706e-04    1         1  ON     1
+       udH_2                 5.523794e-03    1         1  ON     2
+       udH_3                -6.340724e-04    1         1  ON     3
+       udH_4                -2.505422e-03    1         1  ON     4
+       udH_5                 6.203555e-04    1         1  ON     5
+       udH_6                 2.958983e-04    1         1  ON     6
+       udH_7                -3.271287e-03    1         1  ON     7
+       udH_8                 6.480019e-03    1         1  ON     8
+       udH_9                 3.542943e-03    1         1  ON     9
+      udH_10                -1.774803e-04    1         1  ON    10
+      udH_11                -5.207333e-04    1         1  ON    11
+      udH_12                -5.075501e-03    1         1  ON    12
+      udH_13                -1.845094e-03    1         1  ON    13
+      udH_14                 5.539987e-04    1         1  ON    14
+      udH_15                 1.084564e-03    1         1  ON    15
+      udH_16                -3.248686e-03    1         1  ON    16
+      udH_17                -2.567141e-03    1         1  ON    17
+      udH_18                 2.408324e-03    1         1  ON    18
+      udH_19                 3.725078e-03    1         1  ON    19
+      udH_20                 1.326373e-03    1         1  ON    20
+      udH_21                -8.627025e-04    1         1  ON    21
+      udH_22                -7.791093e-04    1         1  ON    22
+      udH_23                 3.149271e-04    1         1  ON    23
+      udH_24                 1.046558e-03    1         1  ON    24
+      udH_25                -1.421185e-04    1         1  ON    25
+
+     Ion: Be   electron-electron: u - u
+      Number of parameters for e-e: 3, for e-I: 3
+      Cutoff radius: 5
+
+         Name                        Value Type Recompute Use Index
+      ------- ---------------------------- ---- --------- --- -----
+       uuBe_0                -5.115214e-03    1         1  ON     0
+       uuBe_1                 3.496522e-03    1         1  ON     1
+       uuBe_2                -1.137362e-02    1         1  ON     2
+       uuBe_3                 7.571741e-03    1         1  ON     3
+       uuBe_4                 6.421535e-03    1         1  ON     4
+       uuBe_5                -1.025297e-03    1         1  ON     5
+       uuBe_6                 7.485576e-03    1         1  ON     6
+       uuBe_7                 4.895001e-03    1         1  ON     7
+       uuBe_8                -1.166781e-03    1         1  ON     8
+       uuBe_9                 3.114764e-03    1         1  ON     9
+      uuBe_10                -3.052666e-03    1         1  ON    10
+      uuBe_11                 6.143307e-04    1         1  ON    11
+      uuBe_12                 2.313249e-03    1         1  ON    12
+      uuBe_13                -6.759703e-03    1         1  ON    13
+      uuBe_14                -1.000612e-03    1         1  ON    14
+      uuBe_15                 2.673051e-04    1         1  ON    15
+      uuBe_16                 4.235112e-03    1         1  ON    16
+      uuBe_17                 5.212430e-03    1         1  ON    17
+      uuBe_18                 8.750075e-04    1         1  ON    18
+      uuBe_19                 2.898212e-04    1         1  ON    19
+      uuBe_20                -1.768989e-03    1         1  ON    20
+      uuBe_21                -1.302667e-03    1         1  ON    21
+      uuBe_22                -8.088073e-04    1         1  ON    22
+      uuBe_23                 3.472588e-03    1         1  ON    23
+      uuBe_24                 1.059810e-03    1         1  ON    24
+      uuBe_25                 3.384001e-04    1         1  ON    25
+
+     Ion: Be   electron-electron: u - d
+      Number of parameters for e-e: 3, for e-I: 3
+      Cutoff radius: 5
+
+         Name                        Value Type Recompute Use Index
+      ------- ---------------------------- ---- --------- --- -----
+       udBe_0                -4.702293e-03    1         1  ON     0
+       udBe_1                -4.015889e-04    1         1  ON     1
+       udBe_2                -1.387621e-03    1         1  ON     2
+       udBe_3                 7.516199e-04    1         1  ON     3
+       udBe_4                -1.363239e-02    1         1  ON     4
+       udBe_5                -4.295731e-04    1         1  ON     5
+       udBe_6                 7.137158e-04    1         1  ON     6
+       udBe_7                 1.113108e-02    1         1  ON     7
+       udBe_8                -6.854556e-03    1         1  ON     8
+       udBe_9                 1.122647e-04    1         1  ON     9
+      udBe_10                -9.205739e-03    1         1  ON    10
+      udBe_11                 7.059410e-03    1         1  ON    11
+      udBe_12                -6.856956e-03    1         1  ON    12
+      udBe_13                 5.572355e-03    1         1  ON    13
+      udBe_14                 3.741806e-03    1         1  ON    14
+      udBe_15                -1.829725e-04    1         1  ON    15
+      udBe_16                -1.691170e-04    1         1  ON    16
+      udBe_17                -7.540976e-03    1         1  ON    17
+      udBe_18                 2.265151e-03    1         1  ON    18
+      udBe_19                 4.332906e-03    1         1  ON    19
+      udBe_20                -5.500306e-03    1         1  ON    20
+      udBe_21                 9.901153e-04    1         1  ON    21
+      udBe_22                 1.532661e-04    1         1  ON    22
+      udBe_23                 3.286990e-03    1         1  ON    23
+      udBe_24                -3.026963e-03    1         1  ON    24
+      udBe_25                 5.409038e-05    1         1  ON    25
+
+  QMCHamiltonian::addOperator Kinetic to H, physical Hamiltonian 
+  QMCHamiltonian::addOperator ElecElec to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type coulomb named ElecElec
+  QMCHamiltonian::addOperator IonIon to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type coulomb named IonIon
+
+  ECPotential builder for pseudopotential 
+
+  Adding pseudopotential for H
+   Linear grid  ri=0 rf=10 npts = 10001
+    ECPComponentBuilder::buildSemiLocalAndLocal 
+    Assuming Hartree unit
+   Number of angular momentum channels 2
+   Maximum angular momentum channel 1
+   Creating a Linear Grid Rmax=1e-10
+  Using global grid with delta = 0.001
+   Making L=1 a local potential with a radial cutoff of 9.999
+    Non-local pseudopotential parameters
+    Maximum angular mementum = 0
+    Number of non-local channels = 1
+       l(0)=0
+    Cutoff radius = 0.001
+    Spherical grids and weights: 
+                        1                 0                 0       0.08333333333
+                       -1   1.224646799e-16                 0       0.08333333333
+             0.4472135955       0.894427191                 0       0.08333333333
+            -0.4472135955      0.7236067977      0.5257311121       0.08333333333
+             0.4472135955      0.2763932023      0.8506508084       0.08333333333
+            -0.4472135955     -0.2763932023      0.8506508084       0.08333333333
+             0.4472135955     -0.7236067977      0.5257311121       0.08333333333
+            -0.4472135955      -0.894427191   1.095357397e-16       0.08333333333
+             0.4472135955     -0.7236067977     -0.5257311121       0.08333333333
+            -0.4472135955     -0.2763932023     -0.8506508084       0.08333333333
+             0.4472135955      0.2763932023     -0.8506508084       0.08333333333
+            -0.4472135955      0.7236067977     -0.5257311121       0.08333333333
+    Maximum cutoff radius 0.001
+
+  Adding pseudopotential for Be
+   Linear grid  ri=0 rf=10 npts = 10001
+    ECPComponentBuilder::buildSemiLocalAndLocal 
+    Assuming Hartree unit
+   Number of angular momentum channels 2
+   Maximum angular momentum channel 1
+   Creating a Linear Grid Rmax=2.37
+  Using global grid with delta = 0.001
+   Making L=1 a local potential with a radial cutoff of 9.999
+    Non-local pseudopotential parameters
+    Maximum angular mementum = 0
+    Number of non-local channels = 1
+       l(0)=0
+    Cutoff radius = 2.37
+    Spherical grids and weights: 
+                        1                 0                 0       0.08333333333
+                       -1   1.224646799e-16                 0       0.08333333333
+             0.4472135955       0.894427191                 0       0.08333333333
+            -0.4472135955      0.7236067977      0.5257311121       0.08333333333
+             0.4472135955      0.2763932023      0.8506508084       0.08333333333
+            -0.4472135955     -0.2763932023      0.8506508084       0.08333333333
+             0.4472135955     -0.7236067977      0.5257311121       0.08333333333
+            -0.4472135955      -0.894427191   1.095357397e-16       0.08333333333
+             0.4472135955     -0.7236067977     -0.5257311121       0.08333333333
+            -0.4472135955     -0.2763932023     -0.8506508084       0.08333333333
+             0.4472135955      0.2763932023     -0.8506508084       0.08333333333
+            -0.4472135955      0.7236067977     -0.5257311121       0.08333333333
+    Maximum cutoff radius 2.37
+  QMCHamiltonian::addOperator LocalECP to H, physical Hamiltonian 
+
+  Using NonLocalECP potential 
+    Maximum grid on a sphere for NonLocalECPotential: 12
+  QMCHamiltonian::addOperator NonLocalECP to H, physical Hamiltonian 
+QMCHamiltonian::addOperatorType added type pseudo named PseudoPot
+
+  QMCHamiltonian::add2WalkerProperty added
+    5 to P::PropertyList 
+    0 to P::Collectables 
+    starting Index of the observables in P::PropertyList = 9
+ParticleSetPool::randomize 1 ParticleSet.
+<init source="ion0" target="e">
+</init>
+  Initialization Execution time = 0.7876 secs
+=========================================================
+ Summary of QMC systems 
+=========================================================
+ParticleSetPool has: 
+
+  ParticleSet 'e' contains 4 particles :  u(2) d(2)
+
+    u -7.0846107290e-01 -1.1076496022e-02 -7.0936114333e-01
+    u  9.6875100261e-01  2.3686177769e-01  2.4033290214e+00
+    d  2.6539557424e-01  5.8687086436e-01 -7.6836240798e-01
+    d  5.0354801302e-01 -6.5045785570e-01 -1.9333163757e+00
+
+  Distance table for dissimilar particles (A-B):
+    source: ion0  target: e
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+  Distance table for similar particles (A-A):
+    source/target: e
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+
+  ParticleSet 'ion0' contains 3 particles :  Be(1) H(2)
+
+    Be  0.0000000000e+00  0.0000000000e+00  0.0000000000e+00
+    H  0.0000000000e+00  0.0000000000e+00  2.5065327300e+00
+    H  0.0000000000e+00  0.0000000000e+00 -2.5065327300e+00
+
+  Distance table for similar particles (A-A):
+    source/target: ion0
+    Using structure-of-arrays (SoA) data layout
+    Distance computations use open boundary conditions in 3D.
+
+
+  Hamiltonian h0
+  Kinetic         Kinetic energy
+  ElecElec        CoulombAB source=e
+
+  IonIon          CoulombAA source/target ion0
+
+  LocalECP        LocalECPotential: ion0
+  NonLocalECP     NonLocalECPotential: ion0
+
+
+=========================================================
+  Start VMC
+  File Root gs_qmc.s000 append = no 
+=========================================================
+Resetting walkers
+  Adding 64 walkers to 0 existing sets
+  Total number of walkers: 2.5600000000e+02
+  Total weight: 2.5600000000e+02
+  Resetting Properties of the walkers 1 x 14
+
+<vmc function="put">
+  qmc_counter=0  my_counter=0
+  time step      = 1.0000000000e+00
+  blocks         = 100
+  steps          = 20
+  substeps       = 2
+  current        = 0
+  target samples = 0.0000000000e+00
+  walkers/mpi    = 64
+
+  stepsbetweensamples = 2020
+  SpinMoves      = no
+<parameter name="blocks" condition="int">100</parameter>
+<parameter name="blocks_between_recompute" condition="int">0</parameter>
+<parameter name="check_properties" condition="int">100</parameter>
+<parameter name="checkproperties" condition="int">100</parameter>
+<parameter name="current" condition="int">0</parameter>
+<parameter name="dmcwalkersperthread" condition="real">0.0000000000e+00</parameter>
+<parameter name="maxcpusecs" condition="real">3.6000000000e+05</parameter>
+<parameter name="record_configs" condition="int">0</parameter>
+<parameter name="record_walkers" condition="int">2020</parameter>
+<parameter name="recordconfigs" condition="int">0</parameter>
+<parameter name="recordwalkers" condition="int">2020</parameter>
+<parameter name="rewind" condition="int">0</parameter>
+<parameter name="samples" condition="real">0.0000000000e+00</parameter>
+<parameter name="samplesperthread" condition="real">0.0000000000e+00</parameter>
+<parameter name="spinmass" condition="double">1.0000000000e+00</parameter>
+<parameter name="spinmoves" condition="string">no</parameter>
+<parameter name="steps" condition="int">20</parameter>
+<parameter name="stepsbetweensamples" condition="int">2020</parameter>
+<parameter name="store_configs" condition="int">0</parameter>
+<parameter name="storeconfigs" condition="int">0</parameter>
+<parameter name="sub_steps" condition="int">2</parameter>
+<parameter name="substeps" condition="int">2</parameter>
+<parameter name="tau" condition="au">1.0000000000e+00</parameter>
+<parameter name="time_step" condition="au">1.0000000000e+00</parameter>
+<parameter name="timestep" condition="au">1.0000000000e+00</parameter>
+<parameter name="use_drift" condition="string">yes</parameter>
+<parameter name="usedrift" condition="string">yes</parameter>
+<parameter name="walkers" condition="int">64</parameter>
+<parameter name="warmup_steps" condition="int">20</parameter>
+<parameter name="warmupsteps" condition="int">20</parameter>
+  DumpConfig==false Nothing (configurations, state) will be saved.
+  Walker Samples are dumped every 2020 steps.
+</vmc>
+  Set drift_modifier UNR parameter a = 1.0000000000e+00
+  Adding a default LocalEnergyEstimator for the MainEstimator 
+  Initial partition of walkers 0 64 
+
+  Using Particle by Particle moves
+  Walker moves with drift
+  Total Sample Size   =0
+  Walker distribution on root = 0 64 
+  Using Locality Approximation
+===== Memory Usage after the buffer registration =====
+Available memory on node 0, free + buffers : 92916 MB
+Memory footprint by rank 0 on node 0       : 78 MB
+==================================================
+  Anonymous Buffer size per walker : 18208 Bytes.
+MEMORY increase 1 MB VMC::resetRun
+====================================================
+  SimpleFixedNodeBranch::finalize after a VMC block
+    QMC counter        = 0
+    time step          = 1
+    reference energy   = -2.23579
+    reference variance = 0.0140222
+====================================================
+  QMC Execution time = 6.3180e+01 secs
+BRANCH resetRun
+ SimpleFixedNodeBranch::resetRun detected changes in <parameter>'s 
+ BranchMode : 0000001100 0000001100
+ iParam (old): 20                1                 0                 0                 256               256               1                 0                 
+ iParam (new): 50                1                 0                 2048              256               256               1                 0                 
+ vParam (old): 1.0000000000e+00  1.0000000000e+00  -2.2357881459e+00 -2.2357881459e+00 1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.4022167184e-02  -2.2357881459e+00 1.0000000000e+00  1.0000000000e+00  1.0000000000e+01  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  
+ vParam (new): 2.0000000000e-02  1.0000000000e+00  -2.2357881459e+00 -2.2357881459e+00 1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.4022167184e-02  -2.2357881459e+00 1.0000000000e+00  1.0000000000e+00  1.0000000000e+01  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  
+
+=========================================================
+  Start DMC
+  File Root gs_qmc.s001 append = no 
+=========================================================
+Using existing walkers 
+  Resetting Properties of the walkers 1 x 14
+  Set drift_modifier UNR parameter a = 1.0000000000e+00
+  Cannot make clones again. Use existing 1 clones
+  Total number of walkers: 2.5600000000e+02
+  Total weight: 2.5600000000e+02
+  Creating WalkerController: target  number of walkers = 2048
+  Using WalkerControlMPI for dynamic population control.
+  START ALL OVER 
+  WalkerControlBase parameters 
+    maxCopy = 2
+    Max Walkers per MPI rank 1025
+    Min Walkers per MPI rank 103
+    Using non-blocking send/recv
+  QMC counter      = 1
+  time step        = 2.0000000000e-02
+  effective time step = 2.0000000000e-02
+  trial energy     = -2.2357881459e+00
+  reference energy = -2.2357881459e+00
+  Feedback = 1.0000000000e+00
+  reference variance = 1.4022167184e-02
+  target walkers = 2048
+  branching cutoff scheme classic
+  branch cutoff = 5.0000000000e+01 7.5000000000e+01
+  Max and minimum walkers per node= 1025 103
+  QMC Status (BranchMode) = 0000001101
+  Total number of walkers: 2.0480000000e+03
+  Total weight: 2.0480000000e+03
+  Initial partition of walkers on a node: 0 512 
+  Updates by particle-by-particle moves
+  DMC moves are rejected when a node crossing is detected
+  Using Locality Approximation
+===== Memory Usage after the buffer registration =====
+Available memory on node 0, free + buffers : 92916 MB
+Memory footprint by rank 0 on node 0       : 97 MB
+==================================================
+SimpleFixedNodeBranch::checkParameters 
+  Average Energy of a population  = -2.23576
+  Energy Variance = 0.0140311
+
+  Fluctuating population
+  Persistent walkers are killed after 1 MC sweeps
+  BranchInterval = 1
+  Steps per block = 50
+  Number of blocks = 20
+
+  DMC Engine Initialization = 7.2810482979e-01 secs
+
+ Warmup is completed after 50
+
+  TauEff     = 1.9912554493e-02
+ TauEff/Tau = 9.9562772464e-01
+  Etrial     = -2.2891439925e+00
+ Running average of energy = -2.2389486443e+00
+                  Variance = 2.7317967057e-02
+branch cutoff = 1.0000000000e+01 1.5000000000e+01
+====================================================
+  SimpleFixedNodeBranch::finalize after a DMC block
+    QMC counter                   = 1
+    time step                     = 0.02
+    effective time step           = 0.0191955
+    trial energy                  = -5.35219
+    reference energy              = -4.65806
+    reference variance            = 0.027318
+    target walkers                = 2048
+    branch cutoff                 = 10 15
+    Max and minimum walkers per node= 1025 103
+    Feedback                      = 1
+    QMC Status (BranchMode)       = 0000001111
+====================================================
+  QMC Execution time = 5.2842e+02 secs
+BRANCH resetRun
+ SimpleFixedNodeBranch::resetRun detected changes in <parameter>'s 
+ BranchMode : 0000001111 0000001111
+  WalkerControlBase parameters 
+    maxCopy = 2
+    Max Walkers per MPI rank 1025
+    Min Walkers per MPI rank 103
+    Using non-blocking send/recv
+ iParam (old): 0                 1                 1                 2048              1025              103               1                 0                 
+ iParam (new): 50                1                 1                 2048              1025              103               1                 0                 
+ vParam (old): 2.0000000000e-02  1.9195538829e-02  -5.3521873491e+00 -4.6580640826e+00 -9.1588647760e+00 1.5000000000e+01  1.0000000000e+01  2.0000000000e-01  2.7317967057e-02  -4.4343197432e+03 9.5100000000e+02  1.0000000000e+00  1.0000000000e+01  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  
+ vParam (new): 1.0000000000e-02  1.9195538829e-02  -5.3521873491e+00 -4.6580640826e+00 -9.1588647760e+00 1.5000000000e+01  1.0000000000e+01  2.0000000000e-01  2.7317967057e-02  -4.4343197432e+03 9.5100000000e+02  1.0000000000e+00  1.0000000000e+01  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  
+
+ Using branching cutoff scheme classic
+
+=========================================================
+  Start DMC
+  File Root gs_qmc.s002 append = no 
+=========================================================
+Using existing walkers 
+  Resetting Properties of the walkers 1 x 14
+  Set drift_modifier UNR parameter a = 1.0000000000e+00
+  Cannot make clones again. Use existing 1 clones
+  Total number of walkers: 4.1000000000e+03
+  Total weight: 4.1000000000e+03
+  WalkerControlBase parameters 
+    maxCopy = 2
+    Max Walkers per MPI rank 1025
+    Min Walkers per MPI rank 103
+    Using non-blocking send/recv
+  QMC counter      = 2
+  time step        = 1.0000000000e-02
+  effective time step = 1.9195538829e-02
+  trial energy     = -5.3521873491e+00
+  reference energy = -4.6580640826e+00
+  Feedback = 1.0000000000e+00
+  reference variance = 2.7317967057e-02
+  target walkers = 2048
+  branching cutoff scheme classic
+  branch cutoff = 1.0000000000e+01 1.5000000000e+01
+  Max and minimum walkers per node= 1025 103
+  QMC Status (BranchMode) = 0000001101
+  Initial partition of walkers on a node: 0 1025 
+  Updates by particle-by-particle moves
+  DMC moves are rejected when a node crossing is detected
+  Using Locality Approximation
+===== Memory Usage after the buffer registration =====
+Available memory on node 0, free + buffers : 92873 MB
+Memory footprint by rank 0 on node 0       : 122 MB
+==================================================
+SimpleFixedNodeBranch::checkParameters 
+  Average Energy of a population  = -9.10166
+  Energy Variance = 36.1692
+
+  Fluctuating population
+  Persistent walkers are killed after 1 MC sweeps
+  BranchInterval = 1
+  Steps per block = 100
+  Number of blocks = 20
+
+  DMC Engine Initialization = 4.1105198860e-01 secs
+
+ Warmup is completed after 50
+
+  TauEff     = 9.6256426258e-03
+ TauEff/Tau = 9.6256426258e-01
+  Etrial     = -1.1772235217e+01
+ Running average of energy = -1.1331064527e+01
+                  Variance = 4.3367028903e+01
+branch cutoff = 2.5000000000e+02 3.7500000000e+02
+====================================================
+  SimpleFixedNodeBranch::finalize after a DMC block
+    QMC counter                   = 2
+    time step                     = 0.01
+    effective time step           = 0.00952704
+    trial energy                  = -20.4789
+    reference energy              = -20.2437
+    reference variance            = 43.367
+    target walkers                = 2048
+    branch cutoff                 = 250 375
+    Max and minimum walkers per node= 1025 103
+    Feedback                      = 1
+    QMC Status (BranchMode)       = 0000001111
+====================================================
+  QMC Execution time = 7.6989e+02 secs
+BRANCH resetRun
+ SimpleFixedNodeBranch::resetRun detected changes in <parameter>'s 
+ BranchMode : 0000001111 0000001111
+  WalkerControlBase parameters 
+    maxCopy = 2
+    Max Walkers per MPI rank 1025
+    Min Walkers per MPI rank 103
+    Using non-blocking send/recv
+ iParam (old): 0                 1                 2                 2048              1025              103               1                 0                 
+ iParam (new): 100               1                 2                 2048              1025              103               1                 0                 
+ vParam (old): 1.0000000000e-02  9.5270433965e-03  -2.0478882190e+01 -2.0243701996e+01 -1.9526270928e+01 3.7500000000e+02  2.5000000000e+02  8.0000000000e-03  4.3367028903e+01  -3.9494745163e+04 1.9510000000e+03  1.0000000000e+00  1.0000000000e+01  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  
+ vParam (new): 5.0000000000e-03  9.5270433965e-03  -2.0478882190e+01 -2.0243701996e+01 -1.9526270928e+01 6.5050543355e+02  4.3367028903e+02  4.6117985266e-03  4.3367028903e+01  -3.9494745163e+04 1.9510000000e+03  1.0000000000e+00  1.0000000000e+01  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  
+
+ Using branching cutoff scheme classic
+
+=========================================================
+  Start DMC
+  File Root gs_qmc.s003 append = no 
+=========================================================
+Using existing walkers 
+  Resetting Properties of the walkers 1 x 14
+  Set drift_modifier UNR parameter a = 1.0000000000e+00
+  Cannot make clones again. Use existing 1 clones
+  Total number of walkers: 2.5910000000e+03
+  Total weight: 2.5910000000e+03
+  WalkerControlBase parameters 
+    maxCopy = 2
+    Max Walkers per MPI rank 1025
+    Min Walkers per MPI rank 103
+    Using non-blocking send/recv
+  QMC counter      = 3
+  time step        = 5.0000000000e-03
+  effective time step = 9.5270433965e-03
+  trial energy     = -2.0478882190e+01
+  reference energy = -2.0243701996e+01
+  Feedback = 1.0000000000e+00
+  reference variance = 4.3367028903e+01
+  target walkers = 2048
+  branching cutoff scheme classic
+  branch cutoff = 4.3367028903e+02 6.5050543355e+02
+  Max and minimum walkers per node= 1025 103
+  QMC Status (BranchMode) = 0000001101
+  Initial partition of walkers on a node: 0 647 
+  Updates by particle-by-particle moves
+  DMC moves are rejected when a node crossing is detected
+  Using Locality Approximation
+===== Memory Usage after the buffer registration =====
+Available memory on node 0, free + buffers : 92853 MB
+Memory footprint by rank 0 on node 0       : 134 MB
+==================================================
+SimpleFixedNodeBranch::checkParameters 
+  Average Energy of a population  = -19.4943
+  Energy Variance = 115.399
+
+  Fluctuating population
+  Persistent walkers are killed after 1 MC sweeps
+  BranchInterval = 1
+  Steps per block = 200
+  Number of blocks = 20
+
+  DMC Engine Initialization = 6.1711788177e-01 secs
+
+ Warmup is completed after 100
+
+  TauEff     = 4.8928356441e-03
+ TauEff/Tau = 9.7856712882e-01
+  Etrial     = -1.9950376055e+01
+ Running average of energy = -2.0053815022e+01
+                  Variance = 1.2225116734e+02
+branch cutoff = 5.0000000000e+02 7.5000000000e+02
+====================================================
+  SimpleFixedNodeBranch::finalize after a DMC block
+    QMC counter                   = 3
+    time step                     = 0.005
+    effective time step           = 0.00489122
+    trial energy                  = -20.842
+    reference energy              = -20.7338
+    reference variance            = 122.251
+    target walkers                = 2048
+    branch cutoff                 = 500 750
+    Max and minimum walkers per node= 1025 103
+    Feedback                      = 1
+    QMC Status (BranchMode)       = 0000001111
+====================================================
+  QMC Execution time = 9.3102e+02 secs
+BRANCH resetRun
+ SimpleFixedNodeBranch::resetRun detected changes in <parameter>'s 
+ BranchMode : 0000001111 0000001111
+  WalkerControlBase parameters 
+    maxCopy = 2
+    Max Walkers per MPI rank 1025
+    Min Walkers per MPI rank 103
+    Using non-blocking send/recv
+ iParam (old): 0                 1                 3                 2048              1025              103               1                 0                 
+ iParam (new): 500               1                 3                 2048              1025              103               1                 0                 
+ vParam (old): 5.0000000000e-03  4.8912245194e-03  -2.0842030283e+01 -2.0733841739e+01 -2.1308629709e+01 7.5000000000e+02  5.0000000000e+02  4.0000000000e-03  1.2225116734e+02  -8.0883291410e+04 3.9010000000e+03  1.0000000000e+00  1.0000000000e+01  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  
+ vParam (new): 1.0000000000e-03  4.8912245194e-03  -2.0842030283e+01 -2.0733841739e+01 -2.1308629709e+01 1.8337675100e+03  1.2225116734e+03  1.6359761985e-03  1.2225116734e+02  -8.0883291410e+04 3.9010000000e+03  1.0000000000e+00  1.0000000000e+01  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  1.0000000000e+00  
+
+ Using branching cutoff scheme classic
+
+=========================================================
+  Start DMC
+  File Root gs_qmc.s004 append = no 
+=========================================================
+Using existing walkers 
+  Resetting Properties of the walkers 1 x 14
+  Set drift_modifier UNR parameter a = 1.0000000000e+00
+  Cannot make clones again. Use existing 1 clones
+  Total number of walkers: 2.2820000000e+03
+  Total weight: 2.2820000000e+03
+  WalkerControlBase parameters 
+    maxCopy = 2
+    Max Walkers per MPI rank 1025
+    Min Walkers per MPI rank 103
+    Using non-blocking send/recv
+  QMC counter      = 4
+  time step        = 1.0000000000e-03
+  effective time step = 4.8912245194e-03
+  trial energy     = -2.0842030283e+01
+  reference energy = -2.0733841739e+01
+  Feedback = 1.0000000000e+00
+  reference variance = 1.2225116734e+02
+  target walkers = 2048
+  branching cutoff scheme classic
+  branch cutoff = 1.2225116734e+03 1.8337675100e+03
+  Max and minimum walkers per node= 1025 103
+  QMC Status (BranchMode) = 0000001101
+  Initial partition of walkers on a node: 0 570 
+  Updates by particle-by-particle moves
+  DMC moves are rejected when a node crossing is detected
+  Using Locality Approximation
+===== Memory Usage after the buffer registration =====
+Available memory on node 0, free + buffers : 92853 MB
+Memory footprint by rank 0 on node 0       : 134 MB
+==================================================
+SimpleFixedNodeBranch::checkParameters 
+  Average Energy of a population  = -21.2927
+  Energy Variance = 137.261
+
+  Fluctuating population
+  Persistent walkers are killed after 1 MC sweeps
+  BranchInterval = 1
+  Steps per block = 1000
+  Number of blocks = 20
+
+  DMC Engine Initialization = 2.0077586174e-01 secs
+
+ Warmup is completed after 500
+
+  TauEff     = 9.9681369412e-04
+ TauEff/Tau = 9.9681369412e-01
+  Etrial     = -2.0227696564e+01
+ Running average of energy = -2.1304646182e+01
+                  Variance = 1.3777052346e+02
+branch cutoff = 1.3777052346e+03 2.0665578518e+03
+====================================================
+  SimpleFixedNodeBranch::finalize after a DMC block
+    QMC counter                   = 4
+    time step                     = 0.001
+    effective time step           = 0.000996817
+    trial energy                  = -20.9024
+    reference energy              = -21.0999
+    reference variance            = 137.771
+    target walkers                = 2048
+    branch cutoff                 = 1377.71 2066.56
+    Max and minimum walkers per node= 1025 103
+    Feedback                      = 1
+    QMC Status (BranchMode)       = 0000001111
+====================================================
+  QMC Execution time = 4.6226e+03 secs
+  Total Execution time = 6.9156e+03 secs
+
+=========================================================
+  A new xml input file : gs_qmc.s004.cont.xml

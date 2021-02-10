@@ -1,0 +1,143 @@
+<?xml version="1.0"?>
+<simulation>
+   <project id="gs_vmc" series="1">
+      <application name="qmcpack" role="molecu" class="serial" version="1.0"/>
+   <host>nid05982</host><date>Tue Feb  2 18:19:57 2021
+</date></project>
+   <qmcsystem>
+      <simulationcell>
+         <parameter name="bconds">
+            n n n
+         </parameter>
+      </simulationcell>
+      <particleset name="ion0" size="4">
+         <attrib name="ionid" datatype="stringArray">
+            C C H H
+         </attrib>
+         <attrib name="position" datatype="posArray" condition="0">
+                  0.00000000        0.00000000        1.13629232
+                  0.00000000        0.00000000       -1.13629232
+                  0.00000000        0.00000000        3.14526016
+                  0.00000000        0.00000000       -3.14526016
+         </attrib>
+         <group name="C">
+            <parameter name="charge">    4                     </parameter>
+            <parameter name="valence">    4                     </parameter>
+            <parameter name="atomicnumber">    6                     </parameter>
+         </group>
+         <group name="H">
+            <parameter name="charge">    1                     </parameter>
+            <parameter name="valence">    1                     </parameter>
+            <parameter name="atomicnumber">    1                     </parameter>
+         </group>
+      </particleset>
+      <particleset name="e" random="yes" randomsrc="ion0">
+         <group name="u" size="5">
+            <parameter name="charge">    -1                    </parameter>
+         </group>
+         <group name="d" size="5">
+            <parameter name="charge">    -1                    </parameter>
+         </group>
+      </particleset>
+      <wavefunction name="psi0" target="e">
+         <determinantset type="MolecularOrbital" href="../scf/scf.h5" source="ion0" transform="yes" name="LCAOBSet">
+            <slaterdeterminant>
+               <determinant id="updet" size="5">
+                  <occupation mode="ground">                                                     </occupation>
+                  <coefficient size="250" spindataset="0">                                                     </coefficient>
+               </determinant>
+               <determinant id="downdet" size="5">
+                  <occupation mode="ground">                                                     </occupation>
+                  <coefficient size="250" spindataset="0">                                                     </coefficient>
+               </determinant>
+            </slaterdeterminant>
+         </determinantset>
+         <jastrow type="One-Body" name="J1" function="bspline" source="ion0" print="yes">
+            <correlation elementType="C" size="10" rcut="5.0" cusp="0.0">
+               <coefficients id="eC" type="Array">                  
+-1.026042996 -0.9833640988 -0.8825760386 -0.7284889326 -0.5604701802 -0.3953596677 
+-0.282998704 -0.1814128947 -0.1015962099 -0.04504782369
+               </coefficients>
+            </correlation>
+            <correlation elementType="H" size="10" rcut="5.0" cusp="0.0">
+               <coefficients id="eH" type="Array">                  
+-0.2279183721 -0.205366889 -0.1818607466 -0.1461302583 -0.1197210964 -0.1070103715 
+-0.07839415887 -0.05019949835 -0.02563125786 -0.007481252595
+               </coefficients>
+            </correlation>
+         </jastrow>
+         <jastrow type="Two-Body" name="J2" function="bspline" print="yes">
+            <correlation speciesA="u" speciesB="u" size="10" rcut="5.0">
+               <coefficients id="uu" type="Array">                  
+0.4420841492 0.3575603268 0.2754721871 0.2122174499 0.1592483049 0.1149012265 
+0.07795293153 0.05090760884 0.02941951433 0.01439628146
+               </coefficients>
+            </correlation>
+            <correlation speciesA="u" speciesB="d" size="10" rcut="5.0">
+               <coefficients id="ud" type="Array">                  
+0.7483280778 0.5529345173 0.4063532943 0.2984745236 0.2193800611 0.1580031941 
+0.1117275749 0.07631205206 0.04669891761 0.02543368944
+               </coefficients>
+            </correlation>
+         </jastrow>
+         <jastrow type="eeI" name="J3" function="polynomial" print="yes" source="ion0">
+            <correlation ispecies="C" especies1="u" especies2="u" isize="3" esize="3" rcut="5.0">
+               <coefficients id="uuC" type="Array" optimize="yes">                  
+0.003133197382 0.00146248476 -0.008039509944 -0.00276836607 0.003137536107 
+9.935551033e-05 -0.004239900002 0.002574950146 -0.0116546019 0.001686577619 
+-0.00280972327 0.007275125473 0.009488024395 -0.001966983303 -0.007345643784 
+-0.000504459556 0.001159780495 -0.00358807674 -0.004688485092 -0.01029912014 
+0.002596600139 0.003886481248 0.001713545023 -0.001030354076 -0.00111349815 
+-0.0003563200183
+               </coefficients>
+            </correlation>
+            <correlation ispecies="C" especies1="u" especies2="d" isize="3" esize="3" rcut="5.0">
+               <coefficients id="udC" type="Array" optimize="yes">                  
+-0.003759648339 0.001924192044 0.009546445494 0.001222302268 -0.0005066595635 
+-0.0002698359156 0.01170698848 -0.0081811543 0.005130475668 -0.003954270151 
+0.001816132406 -0.001950282254 0.001169719256 0.0007116495671 -0.003898986985 
+0.0004642881401 0.008587621437 -0.007320500814 0.007337063955 -0.005736288709 
+-0.004427608786 0.001512867098 0.0009438854143 0.002268257332 -0.0009857908189 
+-0.0001353578294
+               </coefficients>
+            </correlation>
+            <correlation ispecies="H" especies1="u" especies2="u" isize="3" esize="3" rcut="5.0">
+               <coefficients id="uuH" type="Array" optimize="yes">                  
+-0.0001545331076 0.001552579202 0.004936082365 -0.002331631783 -9.693307511e-05 
+0.0003382634715 0.001571975408 0.0007374267453 8.225571376e-05 -0.002702534917 
+0.001298217237 -0.0008543722362 0.0006810562918 0.001180169855 -0.001223621227 
+2.395546924e-05 -0.00293161196 -0.002998088167 -0.0005128837392 0.001230902128 
+0.001702099139 -0.0008870040446 0.0002754671309 -0.0003450861789 0.0001091494387 
+-0.0003343211633
+               </coefficients>
+            </correlation>
+            <correlation ispecies="H" especies1="u" especies2="d" isize="3" esize="3" rcut="5.0">
+               <coefficients id="udH" type="Array" optimize="yes">                  
+-0.001463885816 0.0001193532022 0.003974789825 -0.002835186771 -0.005715865965 
+0.0003845409865 0.001572801418 0.006132602026 0.004845801862 0.0004093183655 
+-0.00544623328 -0.000350923078 -0.002642281003 0.001150778486 0.0003850914706 
+0.0002355861063 0.006148416778 -0.0007268306594 -0.0002650169464 -0.0009445790229 
+-0.004082505159 0.001006308572 0.0004760786753 0.003532056502 -0.000378778471 
+-0.0003187149077
+               </coefficients>
+            </correlation>
+         </jastrow>
+      </wavefunction>
+      <hamiltonian name="h0" type="generic" target="e">
+         <pairpot type="coulomb" name="ElecElec" source="e" target="e"/>
+         <pairpot type="coulomb" name="IonIon" source="ion0" target="ion0"/>
+         <pairpot type="pseudo" name="PseudoPot" source="ion0" wavefunction="psi0" format="xml">
+            <pseudo elementType="C" href="C.ccECP.xml"/>
+            <pseudo elementType="H" href="H.ccECP.xml"/>
+         </pairpot>
+      </hamiltonian>
+   </qmcsystem><mcwalkerset fileroot="gs_vmc.s000" node="-1" nprocs="4" version="3 9" collected="yes"/>
+   <qmc method="vmc" move="pbyp">
+      <parameter name="walkers">    256             </parameter>
+      <parameter name="warmupSteps">    20              </parameter>
+      <parameter name="blocks">    100             </parameter>
+      <parameter name="steps">    20              </parameter>
+      <parameter name="subSteps">    2               </parameter>
+      <parameter name="timestep">    1.0             </parameter>
+   </qmc>
+</simulation>

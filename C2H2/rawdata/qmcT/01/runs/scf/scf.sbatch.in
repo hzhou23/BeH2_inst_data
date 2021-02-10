@@ -1,0 +1,26 @@
+#!/bin/bash
+#SBATCH -A m2113
+#SBATCH -p regular
+#SBATCH -C knl
+#SBATCH -J scf
+#SBATCH -t 00:30:00
+#SBATCH -N 1
+#SBATCH --tasks-per-node=1
+#SBATCH --cpus-per-task=272
+#SBATCH -o scf.out
+#SBATCH -e scf.err
+#SBATCH --export=ALL
+
+echo $SLURM_SUBMIT_DIR
+cd $SLURM_SUBMIT_DIR
+
+
+export HDF5_USE_FILE_LOCKING=FALSE
+module unload cray-libsci
+module load cray-hdf5
+#module load python/3.7-anaconda-2019.10
+source activate myenv
+module list
+
+export OMP_NUM_THREADS=1
+python scf.py

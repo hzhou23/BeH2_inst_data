@@ -1,0 +1,122 @@
+<?xml version="1.0"?>
+<simulation>
+   <project id="optJ123" series="3">
+      <application name="qmcpack" role="molecu" class="serial" version="1.0"/>
+   <host>Haihan</host><date>Wed Aug  5 15:58:37 2020
+</date></project>
+   <qmcsystem>
+      <simulationcell>
+         <parameter name="bconds">
+            n n n
+         </parameter>
+      </simulationcell>
+      <particleset name="ion0" size="3">
+         <attrib name="ionid" datatype="stringArray">
+            Be H H
+         </attrib>
+         <attrib name="position" datatype="posArray" condition="0">
+                  0.00000000        0.00000000        0.00000000
+                  0.00000000        0.00000000        2.50653273
+                  0.00000000        0.00000000       -2.50653273
+         </attrib>
+         <group name="Be">
+            <parameter name="charge">    2                     </parameter>
+            <parameter name="valence">    2                     </parameter>
+            <parameter name="atomicnumber">    4                     </parameter>
+         </group>
+         <group name="H">
+            <parameter name="charge">    1                     </parameter>
+            <parameter name="valence">    1                     </parameter>
+            <parameter name="atomicnumber">    1                     </parameter>
+         </group>
+      </particleset>
+      <particleset name="e" random="yes" randomsrc="ion0">
+         <group name="u" size="2">
+            <parameter name="charge">    -1                    </parameter>
+         </group>
+         <group name="d" size="2">
+            <parameter name="charge">    -1                    </parameter>
+         </group>
+      </particleset>
+      <wavefunction name="psi0" target="e">
+         <determinantset type="MolecularOrbital" href="../scf/scf.h5" source="ion0" transform="yes" name="LCAOBSet">
+            <slaterdeterminant>
+               <determinant id="updet" size="2">
+                  <occupation mode="ground">                                                     </occupation>
+                  <coefficient size="91" spindataset="0">                                                     </coefficient>
+               </determinant>
+               <determinant id="downdet" size="2">
+                  <occupation mode="ground">                                                     </occupation>
+                  <coefficient size="91" spindataset="0">                                                     </coefficient>
+               </determinant>
+            </slaterdeterminant>
+         </determinantset>
+         <jastrow type="One-Body" name="J1" function="bspline" source="ion0" print="yes">
+            <correlation elementType="Be" size="10" rcut="5.0" cusp="0.0">
+               <coefficients id="eBe" type="Array">                  
+-0.1901926404 -0.2240736472 -0.1741185598 -0.1586839201 -0.1226998498 -0.08952652274 
+-0.04893676846 -0.02186463087 -0.003898756087 0.003260056011
+               </coefficients>
+            </correlation>
+            <correlation elementType="H" size="10" rcut="5.0" cusp="0.0">
+               <coefficients id="eH" type="Array">                  
+-0.3111988987 -0.2812599921 -0.2447038653 -0.2041213619 -0.1549558396 -0.1241975759 
+-0.09652065814 -0.05157436791 -0.02850402128 -0.008697119778
+               </coefficients>
+            </correlation>
+         </jastrow>
+         <jastrow type="Two-Body" name="J2" function="bspline" print="yes">
+            <correlation speciesA="u" speciesB="u" size="10" rcut="5.0">
+               <coefficients id="uu" type="Array">                  
+0.00322307283 0.09540933702 0.1797069575 0.1789396405 0.1513485516 0.1084705695 
+0.0750399212 0.04735870381 0.02441377219 0.008297774175
+               </coefficients>
+            </correlation>
+            <correlation speciesA="u" speciesB="d" size="10" rcut="5.0">
+               <coefficients id="ud" type="Array">                  
+0.8219804887 0.6698164895 0.510244972 0.3862425536 0.2832136347 0.1980749616 
+0.1238305975 0.07238445097 0.03921811376 0.01893729604
+               </coefficients>
+            </correlation>
+         </jastrow>
+         <jastrow type="eeI" name="J3" function="polynomial" print="yes" source="ion0">
+            <correlation ispecies="Be" especies1="u" especies2="u" isize="3" esize="3" rcut="5.0">
+               <coefficients id="uuBe" type="Array" optimize="yes"/>
+            </correlation>
+            <correlation ispecies="Be" especies1="u" especies2="d" isize="3" esize="3" rcut="5.0">
+               <coefficients id="udBe" type="Array" optimize="yes"/>
+            </correlation>
+            <correlation ispecies="H" especies1="u" especies2="u" isize="3" esize="3" rcut="5.0">
+               <coefficients id="uuH" type="Array" optimize="yes"/>
+            </correlation>
+            <correlation ispecies="H" especies1="u" especies2="d" isize="3" esize="3" rcut="5.0">
+               <coefficients id="udH" type="Array" optimize="yes"/>
+            </correlation>
+         </jastrow>
+      </wavefunction>
+      <hamiltonian name="h0" type="generic" target="e">
+         <pairpot type="coulomb" name="ElecElec" source="e" target="e"/>
+         <pairpot type="coulomb" name="IonIon" source="ion0" target="ion0"/>
+         <pairpot type="pseudo" name="PseudoPot" source="ion0" wavefunction="psi0" format="xml">
+            <pseudo elementType="Be" href="Be.ccECP.xml"/>
+            <pseudo elementType="H" href="H.ccECP.xml"/>
+         </pairpot>
+      </hamiltonian>
+   </qmcsystem><mcwalkerset fileroot="optJ123.s002" node="-1" nprocs="2" version="3 9" collected="yes"/>
+   <loop max="3">
+      <qmc method="linear" move="pbyp" checkpoint="-1">
+         <cost name="energy">    0.9                </cost>
+         <cost name="unreweightedvariance">    0.0                </cost>
+         <cost name="reweightedvariance">    0.1                </cost>
+         <parameter name="blocks">    100                </parameter>
+         <parameter name="steps">    20                 </parameter>
+         <parameter name="subSteps">    2                  </parameter>
+         <parameter name="timestep">    1.5                </parameter>
+         <parameter name="useDrift">    yes                </parameter>
+         <parameter name="samples">    80000              </parameter>
+         <parameter name="MinMethod">    OneShiftOnly         </parameter>
+         <parameter name="minwalkers">    0.8                </parameter>
+         <parameter name="nonlocalpp">    yes                </parameter>
+      </qmc>
+   </loop>
+</simulation>

@@ -1,0 +1,14 @@
+#!/usr/bin/bash
+
+rm dmc.energy
+rm dmc.errorbar
+rm dmc.csv
+
+for i in 0001 0005 001 0015 002 0025 003 0035 004 0045 005 0055 006 0065 007 0075 008 0085 009 0095 01 02 035 045 05 055 07 1
+do
+	gosling-cori BeH2$i.ldmc.log > dmc.out
+	grep 'total_energy0' dmc.out | awk '{print $2}' >> dmc.energy
+	grep 'total_energy0' dmc.out | awk '{print $4}' >> dmc.errorbar
+done
+
+paste -d ' ' dmc.energy dmc.errorbar > dmc.csv

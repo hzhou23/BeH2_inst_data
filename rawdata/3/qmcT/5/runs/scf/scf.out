@@ -1,0 +1,177 @@
+#INFO: **** input file is /home/haihan/Research/BeH2/instability/qmc/5/runs/scf/scf.py ****
+#!/usr/bin/env python3
+
+import sys,os
+from pyscf import scf,gto,dft
+import numpy as np
+from urllib.request import urlretrieve
+
+#~~~~~~~ Input ~~~~~~~~~~~~~~~~~~~~~~~
+
+#Set the current working directory
+cwd = os.getcwd()
+pplib = "http://pseudopotentiallibrary.org/recipes"
+pptype = "ccECP"
+
+#Obtain basis and ECP files from pseudopotentiallibrary.org
+atom1 = "Be"
+bastype1 = "aug-cc-pVTZ"
+basfile1 = "{0}.{1}.nwchem".format(atom1,bastype1)
+ecpfile1 = "{0}.{1}.nwchem".format(atom1,pptype)
+xmlfile1 = "{0}.{1}.xml".format(atom1,pptype) #grab qmcpack xml file for later
+urlretrieve("{0}/{1}/{2}/{3}".format(pplib,atom1,pptype,basfile1),
+        filename=basfile1)
+urlretrieve("{0}/{1}/{2}/{3}".format(pplib,atom1,pptype,ecpfile1),
+        filename=ecpfile1)
+urlretrieve("{0}/{1}/{2}/{3}".format(pplib,atom1,pptype,xmlfile1),
+        filename=xmlfile1)
+
+atom2 = "H"
+bastype2 = "aug-cc-pVTZ"
+basfile2 = "{0}.{1}.nwchem".format(atom2,bastype2)
+ecpfile2 = "{0}.{1}.nwchem".format(atom2,pptype)
+xmlfile2 = "{0}.{1}.xml".format(atom2,pptype) #grab qmcpack xml file for later
+urlretrieve("{0}/{1}/{2}/{3}".format(pplib,atom2,pptype,basfile2),
+        filename=basfile2)
+urlretrieve("{0}/{1}/{2}/{3}".format(pplib,atom2,pptype,ecpfile2),
+        filename=ecpfile2)
+urlretrieve("{0}/{1}/{2}/{3}".format(pplib,atom2,pptype,xmlfile2),
+        filename=xmlfile2)
+
+#~~~~ Build the molecule ~~~~
+
+# Nexus expands this with Mole info
+
+### generated system text ###
+from pyscf import gto as gto_loc
+mol = gto_loc.Mole()
+mol.verbose = 4
+mol.atom    = '''
+              Be   0.00000000   0.00000000   0.00000000
+              H    0.00000000   0.00000000   1.32640000
+              H    0.00000000   0.00000000  -1.32640000
+              '''
+mol.unit    = 'A'
+mol.charge  = 0
+mol.spin    = 0
+mol.build()
+### end generated system text ###
+
+
+
+with open(os.path.join(cwd,basfile1)) as f:
+    bas1 = f.read()
+with open(os.path.join(cwd,basfile2)) as f:
+    bas2 = f.read()
+with open(os.path.join(cwd,ecpfile1)) as f:
+    ecp1 = f.read()
+with open(os.path.join(cwd,ecpfile2)) as f:
+    ecp2 = f.read()
+mol.basis = {atom1: gto.basis.parse(bas1), atom2: gto.basis.parse(bas2)} 
+mol.ecp = {atom1: gto.basis.parse_ecp(ecp1), atom2: gto.basis.parse_ecp(ecp2)}
+mol.build()
+
+#~~~Run HF on molecule~~~~
+mf = scf.RKS(mol)
+mf.xc = 'hf'
+#mf.irrep_nelec = {
+#'Ag' : (4,2),   # s    
+#'B3u': (1,1),   # x    1
+#'B1u': (1,1),   # z    0
+#'B2u': (1,1),   # y   -1
+#'B2g': (1,1),   # xz   1
+#'B3g': (1,0),   # yz  -1
+#'B1g': (1,0),   # xy  -2
+#'Au' : (0,0)    # xyz  
+#}
+mf.verbose=4
+mf.max_cycle=100
+#dm=mf.init_guess_by_chkfile('../../scf_guess/guess/scf.chkfile')
+mf.chkfile='scf.chkfile'
+#en=mf.kernel(dm)
+en=mf.kernel()
+
+
+### generated conversion text ###
+from PyscfToQmcpack import savetoqmcpack
+savetoqmcpack(mol,mf,'scf')
+### end generated conversion text ###
+
+#INFO: ******************** input file end ********************
+
+
+System: uname_result(system='Linux', node='Haihan', release='5.4.0-40-generic', version='#44-Ubuntu SMP Tue Jun 23 00:01:04 UTC 2020', machine='x86_64', processor='x86_64')  Threads 4
+Python 3.8.3 (default, Jul  2 2020, 16:21:59) 
+[GCC 7.3.0]
+numpy 1.18.4  scipy 1.4.1
+Date: Wed Aug  5 16:08:51 2020
+PySCF version 1.7.2
+PySCF path  /home/haihan/.local/lib/python3.8/site-packages/pyscf
+
+[CONFIG] conf_file None
+[INPUT] verbose = 4
+[INPUT] num. atoms = 3
+[INPUT] num. electrons = 6
+[INPUT] charge = 0
+[INPUT] spin (= nelec alpha-beta = 2S) = 0
+[INPUT] symmetry False subgroup None
+[INPUT] Mole.unit = A
+[INPUT]  1 Be     0.000000000000   0.000000000000   0.000000000000 AA    0.000000000000   0.000000000000   0.000000000000 Bohr
+[INPUT]  2 H      0.000000000000   0.000000000000   1.326400000000 AA    0.000000000000   0.000000000000   2.506532731623 Bohr
+[INPUT]  3 H      0.000000000000   0.000000000000  -1.326400000000 AA    0.000000000000   0.000000000000  -2.506532731623 Bohr
+
+nuclear repulsion = 3.39113864054584
+number of shells = 5
+number of NR pGTOs = 21
+number of NR cGTOs = 7
+basis = sto-3g
+ecp = {}
+CPU time:         0.52
+
+
+******** <class 'pyscf.dft.rks.RKS'> ********
+method = RKS-RHF
+initial guess = minao
+damping factor = 0
+level_shift factor = 0
+DIIS = <class 'pyscf.scf.diis.CDIIS'>
+diis_start_cycle = 1
+diis_space = 8
+SCF conv_tol = 1e-09
+SCF conv_tol_grad = None
+SCF max_cycles = 100
+direct_scf = True
+direct_scf_tol = 1e-13
+chkfile to save SCF result = scf.chkfile
+max_memory 4000 MB (current use 72 MB)
+XC functionals = hf
+small_rho_cutoff = 1e-07
+radial grids: 
+    Treutler-Ahlrichs [JCP 102, 346 (1995); DOI:10.1063/1.469408] (M4) radial grids
+    
+becke partition: Becke, JCP 88, 2547 (1988); DOI:10.1063/1.454033
+pruning grids: <function nwchem_prune at 0x7f6424f87820>
+grids dens level: 3
+symmetrized grids: False
+atomic radii adjust function: <function treutler_atomic_radii_adjust at 0x7f6424f87790>
+Set gradient conv threshold to 3.16228e-05
+tot grids = 33158
+init E= -1.87628628791355
+  HOMO = -0.342411436810272  LUMO = 0.0339933452023661
+cycle= 1 E= -2.14935975541395  delta_E= -0.273  |g|= 0.149  |ddm|= 2.75
+  HOMO = -0.451260467616011  LUMO = 0.0360622931320041
+cycle= 2 E= -2.16328524603025  delta_E= -0.0139  |g|= 0.0408  |ddm|= 0.916
+  HOMO = -0.449433753754163  LUMO = 0.0361854801042656
+cycle= 3 E= -2.1645249976645  delta_E= -0.00124  |g|= 0.00192  |ddm|= 0.383
+  HOMO = -0.450109867176561  LUMO = 0.0360751256005053
+cycle= 4 E= -2.16452741985022  delta_E= -2.42e-06  |g|= 0.00018  |ddm|= 0.0106
+  HOMO = -0.450244841311716  LUMO = 0.0360757194035004
+cycle= 5 E= -2.16452743813162  delta_E= -1.83e-08  |g|= 1.59e-05  |ddm|= 0.00291
+  HOMO = -0.450231239407636  LUMO = 0.0360747981858289
+cycle= 6 E= -2.164527438315  delta_E= -1.83e-10  |g|= 2.67e-06  |ddm|= 0.00076
+  HOMO = -0.450232651942306  LUMO = 0.036074823659996
+Extra cycle  E= -2.16452743831913  delta_E= -4.13e-12  |g|= 5.83e-07  |ddm|= 7.96e-05
+converged SCF energy = -2.16452743831913
+Using Python 3.x
+Wavefunction successfully saved to QMCPACK HDF5 Format
+Use: "convert4qmc -pyscf  scf.h5" to generate QMCPACK input files

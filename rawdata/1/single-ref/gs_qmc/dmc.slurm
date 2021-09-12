@@ -1,0 +1,27 @@
+#!/bin/bash
+#SBATCH -A m2113
+#SBATCH -q debug
+#SBATCH -C knl
+#SBATCH -t 00:30:00
+#SBATCH -J BeH2_1_ref_T
+#SBATCH -N 16
+#SBATCH --tasks-per-node=1
+#SBATCH --cpus-per-task=272
+#SBATCH -o dmc.out
+#SBATCH -e dmc.err
+#SBATCH --export=ALL
+
+echo $SLURM_SUBMIT_DIR
+cd $SLURM_SUBMIT_DIR
+
+
+export HDF5_USE_FILE_LOCKING=FALSE
+module unload cray-libsci
+module load cray-hdf5
+#module load python/3.7-anaconda-2019.10
+source activate myenv
+module list
+
+export OMP_NUM_THREADS=1
+ srun qmcpack gs_qmc.xml
+~                            

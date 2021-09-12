@@ -1,0 +1,70 @@
+<?xml version="1.0"?>
+<simulation>
+  <project id="dmc" series="0"/>
+
+  <!-- input from gaussian converter -->
+  <include href="cisd_4.structure.xml"/>
+  <include href="opt.wf.xml"/>
+
+  <!--  Hamiltonian -->
+  <hamiltonian name="h0" type="generic" target="e">
+    <pairpot name="ElecElec" type="coulomb" source="e" target="e"/>
+    <pairpot name="ELEMENT-ECP" type="pseudo" source="ion0" target="e" 
+         format="xml" wavefunction="psi0" >
+         <pseudo elementType="Be" format="xml" href="Be.ccECP.xml" />
+         <pseudo elementType="H" format="xml" href="H.ccECP.xml" />
+    </pairpot>
+    <constant name="IonIon" type="coulomb" source="ion0" target="ion0"/>
+  </hamiltonian>
+
+  <init source="ion0" target="e"/>
+
+     <qmc method="vmc" move="pbyp">
+      <parameter name="walkers"             >    1               </parameter>
+      <parameter name="warmupSteps"         >    100              </parameter>
+      <parameter name="blocks"              >    100             </parameter>
+      <parameter name="steps"               >    20              </parameter>
+      <parameter name="subSteps"            >    2               </parameter>
+      <parameter name="timestep"            >    1.0             </parameter>
+   </qmc>
+   <qmc method="dmc" move="pbyp" checkpoint="5">
+      <parameter name="warmupSteps"         >    100             </parameter>
+      <parameter name="blocks"              >    20              </parameter>
+      <parameter name="steps"               >    50              </parameter>
+      <parameter name="timestep"            >    0.02            </parameter>
+      <parameter name="nonlocalmoves"       >    yes              </parameter>
+      <parameter name="targetwalkers"       >    4096            </parameter>
+   </qmc>
+   <qmc method="dmc" move="pbyp" checkpoint="5">
+      <parameter name="warmupSteps"         >    250             </parameter>
+      <parameter name="blocks"              >    20              </parameter>
+      <parameter name="steps"               >    100             </parameter>
+      <parameter name="timestep"            >    0.01            </parameter>
+      <parameter name="nonlocalmoves"       >    yes              </parameter>
+      <parameter name="targetwalkers"       >    4096            </parameter>
+   </qmc>
+   <qmc method="dmc" move="pbyp" checkpoint="5">
+      <parameter name="warmupSteps"         >    400             </parameter>
+      <parameter name="blocks"              >    20              </parameter>
+      <parameter name="steps"               >    200             </parameter>
+      <parameter name="timestep"            >    0.005           </parameter>
+      <parameter name="nonlocalmoves"       >    yes              </parameter>
+      <parameter name="targetwalkers"       >    4096            </parameter>
+   </qmc>
+   <qmc method="dmc" move="pbyp" checkpoint="5">
+      <parameter name="warmupSteps"         >    2000            </parameter>
+      <parameter name="blocks"              >    20              </parameter>
+      <parameter name="steps"               >    1000            </parameter>
+      <parameter name="timestep"            >    0.001           </parameter>
+      <parameter name="nonlocalmoves"       >    yes              </parameter>
+      <parameter name="targetwalkers"       >    13056            </parameter>
+   </qmc>
+   <qmc method="dmc" move="pbyp" checkpoint="5">
+      <parameter name="warmupSteps"         >    20000           </parameter>
+      <parameter name="blocks"              >    1000            </parameter>
+      <parameter name="steps"               >    20000           </parameter>
+      <parameter name="timestep"            >    0.0001          </parameter>
+      <parameter name="nonlocalmoves"       >    yes              </parameter>
+      <parameter name="targetwalkers"       >    13056            </parameter>
+   </qmc>
+   </simulation>
